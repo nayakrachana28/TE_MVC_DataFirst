@@ -1,0 +1,42 @@
+﻿@model IEnumerable<TE_MVC_DataFirst.Models.Student>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <button class="alert-link"><a asp-action="Create" class="text-success"><i class="fa-solid fa-folder-plus"></i></a>  Add More</button>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th style="color:fuchsia">
+                @Html.DisplayNameFor(model => model.StudentName)
+            </th>
+            <th style="color:fuchsia">
+                @Html.DisplayNameFor(model => model.StudentAge)
+            </th>
+            <th></th>
+        </tr>
+        <hr />
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentAge)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.StudentId" class="text-warning"><i class="fa-solid fa-user-pen"></i></a> |
+                    <a asp-action="Details" asp-route-id="@item.StudentId" class="text-info"><i class="fa-sharp fa-solid fa-circle-info"></i></a> |
+                    <a asp-action="Delete" asp-route-id="@item.StudentId" class="text-danger"><i class="fa-solid fa-trash"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
